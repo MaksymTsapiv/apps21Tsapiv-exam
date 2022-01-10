@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>JsonObject.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JsonConvertor</a> &gt; <a href="index.source.html" class="el_package">json</a> &gt; <span class="el_source">JsonObject.java</span></div><h1>JsonObject.java</h1><pre class="source lang-java linenums">package json;
+
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+
+/**
+ * Created by Andrii_Rodionov on 1/3/2017.
+ */
+public class JsonObject extends Json {
+<span class="fc" id="L11">    private final HashMap&lt;String, Json&gt; jsonPairs = new HashMap&lt;&gt;();</span>
+
+<span class="fc" id="L13">    public JsonObject(JsonPair... jsonPairs) {</span>
+<span class="fc bfc" id="L14" title="All 2 branches covered.">        for (JsonPair pair : jsonPairs) {</span>
+<span class="fc" id="L15">            this.jsonPairs.put(pair.key, pair.value);</span>
+        }
+<span class="fc" id="L17">    }</span>
+
+    @Override
+    public String toJson() {
+<span class="fc" id="L21">        StringBuilder stringBuilder = new StringBuilder();</span>
+<span class="fc" id="L22">        Iterator&lt;Map.Entry&lt;String, Json&gt;&gt; jsonIterator = jsonPairs.entrySet().iterator();</span>
+<span class="fc bfc" id="L23" title="All 2 branches covered.">        while (jsonIterator.hasNext()) {</span>
+<span class="fc" id="L24">            Map.Entry&lt;String, Json&gt; pair = jsonIterator.next();</span>
+<span class="fc" id="L25">            JsonPair jsonPair = new JsonPair(pair.getKey(), pair.getValue());</span>
+<span class="fc" id="L26">            stringBuilder.append(&quot;'&quot;).append(jsonPair.key).append(&quot;': &quot;).append(jsonPair.value.toJson());</span>
+<span class="fc bfc" id="L27" title="All 2 branches covered.">            if (jsonIterator.hasNext())</span>
+<span class="fc" id="L28">                stringBuilder.append(&quot;, &quot;);</span>
+<span class="fc" id="L29">        }</span>
+<span class="fc" id="L30">        return &quot;{&quot; + stringBuilder + &quot;}&quot;;</span>
+    }
+
+    public void add(JsonPair jsonPair) {
+<span class="fc bfc" id="L34" title="All 2 branches covered.">        if (jsonPairs.containsKey(jsonPair.key)) {</span>
+<span class="fc" id="L35">            jsonPairs.replace(jsonPair.key, jsonPair.value);</span>
+        } else {
+<span class="fc" id="L37">            jsonPairs.put(jsonPair.key, jsonPair.value);</span>
+        }
+<span class="fc" id="L39">    }</span>
+
+    public Json find(String name) {
+<span class="fc" id="L42">        return jsonPairs.get(name);</span>
+    }
+
+    public JsonObject projection(String... names) {
+<span class="fc" id="L46">        JsonObject jsonObject = new JsonObject();</span>
+<span class="fc bfc" id="L47" title="All 2 branches covered.">        for (String name : names) {</span>
+<span class="fc" id="L48">            Json value = find(name);</span>
+<span class="fc bfc" id="L49" title="All 2 branches covered.">            if (value != null) {</span>
+<span class="fc" id="L50">                jsonObject.add(new JsonPair(name, value));</span>
+            }
+        }
+<span class="fc" id="L53">        return jsonObject;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

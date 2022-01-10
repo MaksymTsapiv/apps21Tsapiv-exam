@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>JSONApp.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JsonConvertor</a> &gt; <a href="index.source.html" class="el_package">app</a> &gt; <span class="el_source">JSONApp.java</span></div><h1>JSONApp.java</h1><pre class="source lang-java linenums">package app;
+
+import domain.*;
+import json.*;
+
+/**
+ * Created by Andrii_Rodionov on 1/3/2017.
+ */
+<span class="nc" id="L9">public class JSONApp {</span>
+    public static void main(String[] args) {
+<span class="nc" id="L11">        Json jYear = new JsonNumber(2);</span>
+<span class="nc" id="L12">        print(jYear); // 2</span>
+
+<span class="nc" id="L14">        Json jMarks = new JsonArray(new JsonNumber(3), new JsonNumber(4));</span>
+<span class="nc" id="L15">        print(jMarks); // [3, 4]</span>
+
+<span class="nc" id="L17">        JsonPair name = new JsonPair(&quot;name&quot;, new JsonString(&quot;Andrii&quot;));</span>
+<span class="nc" id="L18">        JsonPair surname = new JsonPair(&quot;surname&quot;, new JsonString(&quot;Rodionov&quot;));</span>
+<span class="nc" id="L19">        JsonPair marks = new JsonPair(&quot;marks&quot;, jMarks);</span>
+<span class="nc" id="L20">        JsonPair year = new JsonPair(&quot;year&quot;, jYear);</span>
+<span class="nc" id="L21">        JsonObject jsonObj = new JsonObject(name, surname, year, marks);</span>
+<span class="nc" id="L22">        print(jsonObj); // {'name': 'Andrii', 'surname': 'Rodionov', 'year': 2, 'marks': [3, 4]}</span>
+
+<span class="nc" id="L24">        print(jsonObj.projection(&quot;surname&quot;, &quot;age&quot;, &quot;year&quot;, &quot;marks&quot;)); // {'surname': 'Rodionov', 'year': 2, 'marks': [3, 4]}</span>
+
+<span class="nc" id="L26">        BasicStudent basicStudent = new BasicStudent(&quot;Andrii&quot;, &quot;Rodionov&quot;, 2);</span>
+<span class="nc" id="L27">        print(basicStudent.toJsonObject()); // {'name': 'Andrii', 'surname': 'Rodionov', 'year': 2}</span>
+
+<span class="nc" id="L29">    }</span>
+
+    private static void print(Json json) {
+<span class="nc" id="L32">        System.out.println(json.toJson());</span>
+<span class="nc" id="L33">    }</span>
+
+    public static JsonObject sessionResult() {
+<span class="fc" id="L36">        return new JsonObject(</span>
+                new JsonPair(&quot;name&quot;, new JsonString(&quot;Andrii&quot;)),
+                new JsonPair(&quot;surname&quot;, new JsonString(&quot;Rodionov&quot;)),
+<span class="fc" id="L39">                new JsonPair(&quot;year&quot;, new JsonNumber(2)),</span>
+                new JsonPair(&quot;exams&quot;, new JsonArray(
+
+                        new JsonObject(new JsonPair(&quot;course&quot;, new JsonString(&quot;OOP&quot;)),
+<span class="fc" id="L43">                                new JsonPair(&quot;mark&quot;, new JsonNumber(3)),</span>
+<span class="fc" id="L44">                                new JsonPair(&quot;passed&quot;, new JsonBoolean(true))),</span>
+
+                        new JsonObject(new JsonPair(&quot;course&quot;, new JsonString(&quot;English&quot;)),
+<span class="fc" id="L47">                                new JsonPair(&quot;mark&quot;, new JsonNumber(5)),</span>
+<span class="fc" id="L48">                                new JsonPair(&quot;passed&quot;, new JsonBoolean(true))),</span>
+
+                        new JsonObject(new JsonPair(&quot;course&quot;, new JsonString(&quot;Math&quot;)),
+<span class="fc" id="L51">                                new JsonPair(&quot;mark&quot;, new JsonNumber(2)),</span>
+<span class="fc" id="L52">                                new JsonPair(&quot;passed&quot;, new JsonBoolean(false))))));</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

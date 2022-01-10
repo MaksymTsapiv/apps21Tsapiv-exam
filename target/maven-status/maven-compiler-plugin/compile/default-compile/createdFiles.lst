@@ -1,0 +1,13 @@
+domain\Student.class
+json\Jsonable.class
+app\JSONApp.class
+json\JsonString.class
+domain\BasicStudent.class
+json\JsonObject.class
+json\JsonPair.class
+json\Tuple.class
+json\JsonArray.class
+json\JsonBoolean.class
+json\JsonNumber.class
+json\Json.class
+json\JsonNull.class

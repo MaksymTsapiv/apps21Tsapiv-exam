@@ -1,0 +1,13 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+JsonConvertor,app,JSONApp,127,181,0,0,17,8,3,1,3,1
+JsonConvertor,domain,Student,0,99,0,4,0,11,0,4,0,2
+JsonConvertor,domain,BasicStudent,3,54,0,0,2,6,1,2,1,2
+JsonConvertor,json,JsonString,0,18,0,0,0,4,0,2,0,2
+JsonConvertor,json,JsonNull,0,5,0,0,0,2,0,2,0,2
+JsonConvertor,json,Tuple,0,9,0,0,0,4,0,1,0,1
+JsonConvertor,json,JsonObject,0,165,0,12,0,26,0,11,0,5
+JsonConvertor,json,Json,0,3,0,0,0,1,0,1,0,1
+JsonConvertor,json,JsonArray,0,50,0,4,0,13,0,5,0,3
+JsonConvertor,json,JsonNumber,0,10,0,0,0,4,0,2,0,2
+JsonConvertor,json,JsonPair,0,5,0,0,0,2,0,1,0,1
+JsonConvertor,json,JsonBoolean,0,10,0,0,0,4,0,2,0,2

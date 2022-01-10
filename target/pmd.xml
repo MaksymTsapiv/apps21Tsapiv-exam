@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd version="5.3.2" timestamp="2022-01-10T17:24:27.717">
+<file name="D:\OOP_labs\jsonconvertor\src\main\java\app\JSONApp.java">
+<violation beginline="32" endline="32" begincolumn="28" endcolumn="38" rule="UnnecessaryFullyQualifiedName" ruleset="Import Statements" package="app" class="JSONApp" method="print" externalInfoUrl="http://pmd.sourceforge.net/pmd-5.3.2/pmd-java/rules/java/imports.html#UnnecessaryFullyQualifiedName" priority="4">
+Unnecessary use of fully qualified name 'json.toJson' due to existing import 'json.*'
+</violation>
+</file>
+</pmd>
